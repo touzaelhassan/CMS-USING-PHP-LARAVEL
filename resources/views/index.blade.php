@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
-
 @section('content')
 
-<div>
-    <h1>POSTS</h1>
-</div>
+<div class="content__container">
 
-@include('partials.sidebar')
+    <div>
+        <h1>POSTS</h1>
+    </div>
+
+    @include('partials.sidebar')
+
+</div>
 
 @endsection

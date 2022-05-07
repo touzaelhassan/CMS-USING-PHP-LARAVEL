@@ -15,8 +15,10 @@
 
       # - Via Composer create-project : ( composer create-project laravel/laravel project-name )
       # - Via Laravel Installer       : ( composer global require laravel/installer - laravel new project-name )
-      # - cd project-name
-      # - php artisan serve
+      
+      # - php artisan make:auth
+      # - web.php
+      # - app.blade.php
 
 ----- ----- ----- ----- -----
 ----- ----- ----- ----- -----
