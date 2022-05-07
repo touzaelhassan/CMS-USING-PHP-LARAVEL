@@ -173,3 +173,41 @@
 
 | AUTHENTICATION
 ----------------
+
+----- ----- ----- -----
+----- ----- ----- -----
+----- ----- ----- -----
+
+
+BUILDNG LARAVEL PROJECT:
+------------------------
+
+# - 1 - composer create-project laravel/laravel project-name
+
+# - 2 - php artisan make:auth 
+
+# - 3 - web.php
+
+# - 4 - app.blade.php
+
+# - 5 - The Application Functions
+        
+        - Users ( CRUD )
+        - Categories ( CRUD )
+        - Posts ( CRUD )
+        - Comments ( CRUD )
+
+# - 6 - Create Database Tables
+
+# - 7 - Create Relationship Between Tables 
+
+# - 8 - Migrations 
+        
+        - php artisan make:migration create_users_table
+        - php artisan make:migration create_categories_table
+        - php artisan make:migration create_posts_table
+        - php artisan make:migration create_comments_table
+
+        - Create Tables Structure ( Column Name - Culomn Datatype ) 
+
+        - php artisan migrate
