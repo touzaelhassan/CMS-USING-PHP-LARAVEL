@@ -1,0 +1,173 @@
+|| - BUILDING LARAVEL APPLICATION - ||
+--------------------------------------
+
+| 1 - REQUIREMENTS :
+    
+      # - HTML - CSS - JAVASCRIPT
+      # - PHP - OOP - MVC ( Devide The Application into 3 parts : Model - View - Controller )
+
+| 2 - SETUP LARAVEL DEVELOPMEMT ENVIRONMENT
+
+      # - Installing XAMPP ( Appache - MySQL - PHP )
+      # - Installing Composer ( PHP Package Manager )
+
+| 3 - CREATING LARAVEL PROJECT
+
+      # - Via Composer create-project : ( composer create-project laravel/laravel project-name )
+      # - Via Laravel Installer       : ( composer global require laravel/installer - laravel new project-name )
+      # - cd project-name
+      # - php artisan serve
+
+----- ----- ----- ----- -----
+----- ----- ----- ----- -----
+
+| ROUTES ( URL --> function (){ What will happen on The Server [ web server ( Appache ) + Application ]  when The user enter The URL in The web browser })
+--------
+
+        CREATING ROUTES
+        ---------------
+
+        Route::get('/test', function(){ return view('test')}) 
+        Route::view('/test', 'test')
+
+        Route::get('/test/{id}', function($id){ return view('test', ['id' => $id])});
+        Route::get('/test/{id}', function($id){ return view('test')->with(['id' => $id]) });
+        Route::get('/test/{id}', function($id){ return view('test', compact('id')) });
+
+        Route::get('/users', [UsersController, 'index']);
+        Route::get('/users/create', [UsersController, 'create']);
+
+        LARAVEL HAS A DIFFERENT WAY OF CREATING ROUTES USING THE STATIC METHOD ( resource() )
+        --------------------------------------------------------------------------------------
+
+        Route::resource('posts', PostsController::class);
+
+        The static method resource() create a collection of RESTfull routes :
+
+         Method |  URL                |  Class Controller |  Class Method
+        --------|---------------------|-------------------|-------------- 
+        GET     |  users              |  usersController  |  index()
+        POST    |  users              |  usersController  |  store()
+        GET     |  users/create       |  usersController  |  create()
+        GET     |  users/{user}       |  usersController  |  show()
+        GET     |  users/{user}/edit  |  usersController  |  edit()
+        PATCH   |  users/{user}       |  usersController  |  update()
+        DELETE  |  users              |  usersController  |  destroy()
+
+
+
+
+| CONTROLLERS
+-------------
+
+      CREATE A NEW CONTROLLER : php artisan make:controller UsersController
+      ---------------------------------------------------------------------
+       
+      class UsersController extends Controller {
+
+            public function index(){
+                  $users = User::all();
+                  return view('users.index', compact('users'));
+            }
+
+            public function create(){
+                  return view('users.create');
+            }
+      } 
+
+
+      LARAVEL HAS A DIFFERENT WAY OF CREATING CONTROLLERS 
+      ---------------------------------------------
+      
+      php artisan make:controller UsersController -r 
+
+      This command create The UsersController and all necessary methods To perform CRUD operations
+
+
+| MODELS
+--------
+
+        MODELS :
+        --------
+        
+        # Create a user model  =>  php artisan make:model User
+        # create a user model and migration file => php artisan make:model User --migration ( or -m )
+
+
+
+        MIGRATIONS : ( Create, update and delete tables from The database )
+        -------------------------------------------------------------------
+
+        # Create a Database using phpMyAdmin
+        # create users table structure ( migration file )       =>  php artisan make:migration create_users_table 
+        # create users table structure ( migration file )       =>  php artisan make:migration posts_table --create=users
+        # update users table structure                          =>  php artisan make:migration add_column_to_table --table=users
+        # create users table in The database                    =>  php artisan migrate 
+        # php artisan migrate:rollback 
+        # php artisan migrate:refresh
+
+
+
+
+        ELEQUENT :
+        ----------
+        - Elequent link or Bind each table ( users ) on The database To a model ( User )
+        - Elequent allows us To use these models ( User ) To perform CRUD operations on The database 
+        - Elequent Create relationship between tables easily
+        
+        # CREATE
+          
+          User::create(['name' => 'someone', 'email' => 'someone@gmail.com', 'password' => 'pass']);
+
+          ----- ----- ----- OR
+
+          $user = new User();
+
+          $user->name = 'someone';
+          $user->email = 'someone@gmail.com';
+          $user->password = 'pass';
+
+          $post->save();
+           
+        # READ  =>  User::all();
+        # READ  =>  User::find($id);
+        # READ  =>  User::findOrFail($id);
+
+        # UPDATE
+
+          $user = User::fin($id);
+
+          $user->email = 'anotherone@gmail.com';
+
+          $user->save();
+
+        # DELETE 
+        
+          User::destroy($id);
+
+          ----- ----- -----
+
+          $user = User::where('email', 'someone@gmail.com');
+          $user->delete();
+
+        QUERY BUILDER : ( allows us To perform CRUD operations on The database without writing SQL queries )
+        ----------------------------------------------------------------------------------------------------
+        
+        # CREATE  =>  DB::table('users')->insert(['name' => request('name'), 'email' => request('email')])
+        # READ    =>  DB::table('users')->get()
+        # READ    =>  DB::table('users')->find($id)
+        # UPDATE  =>  DB::table('users)->where('id', '=', 3)->update(['email' => 'example@gmail.com'])
+        # DELETE  =>  DB::table('users)->where('id', '=', 3)->delete()
+
+
+        
+       
+
+| VIEWS
+-------
+
+| BLADE = Laravel Template Engine ( BLADE CODE == LARAVEL ==> PHP CODE )
+-------
+
+| AUTHENTICATION
+----------------
