@@ -1,4 +1,4 @@
-<aside>
+<aside class="sidebar">
     <h1>SIDEBAR CONTENT</h1>
     <nav>
         <ul>

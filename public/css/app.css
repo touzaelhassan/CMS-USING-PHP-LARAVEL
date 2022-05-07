@@ -11286,3 +11286,65 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: cairo, roboto, "sans-serif";
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.header {
+  border: 3px solid #000;
+}
+
+.main-content {
+  margin: 20px 0;
+  border: 3px solid #000;
+}
+
+.content_index {
+  display: flex;
+  gap: 20px;
+  border: 3px solid red;
+  padding: 20px;
+  min-height: 72vh;
+}
+
+.posts {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 3px solid green;
+  padding: 20px;
+}
+
+.post-image {
+  margin: 16px;
+  width: 250px;
+}
+.post-image img {
+  width: 100%;
+}
+
+.sidebar {
+  border: 3px solid green;
+}
+
+.footer {
+  border: 3px solid #000;
+}
+.footer div p {
+  padding: 20px;
+  margin: 0;
+  text-align: center;
+}

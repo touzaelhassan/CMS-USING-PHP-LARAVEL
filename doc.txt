@@ -218,4 +218,6 @@ BUILDNG LARAVEL PROJECT:
 
 # - 9 - Defining relationships betwen tables
 
+# - ? - Create Controller => php artisan make:controller PostController --resource
+
 
